@@ -1,0 +1,23 @@
+dumbFormState - keeps the state of form entries when you leave and come back later or refresh, etc.
+features: Able to keep state in multipe forms across pages in a namespaced way so data does not collide
+Author: Jason Sebring, mail@jasonsebring.com, 2/23/2011
+
+Public Domain.
+NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
+
+depends on: 
+HTML 5 storage capability
+Browsers supported: IE 8+ and current version of Firefox, Safari, Opera and Chrome
+jQuery 1.5 : tested in this version only, try it out on lower versions if you like
+json2.js : Douglas Crockford GitHUB -> https://github.com/douglascrockford/JSON-js
+
+configurable options:
+$('form').dumbFormState({ 
+persistPasswords : false, // default is false, recommended to NOT do this
+persistLocal : false, // default is false, persists in sessionStorage or to localStorage
+skipSelector : null, // takes jQuery selector of items you DO NOT want to persist 
+autoPersist : true, // true by default, false will only persist on form submit
+});
+
+instance methods:
+$('form').dumbFormState('remove'); // removes all data associated with the forms matching the selector
