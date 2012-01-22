@@ -1,0 +1,36 @@
+{
+    "name": "dumbFixed",
+    "version": "1.0.1",
+    "title": "dumbFixed",
+    "author": {
+        "name": "Jason Sebring",
+        "url": "https://github.com/sebringj"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "MIT-LICENSE.txt"
+        },
+        {
+            "type": "GPLv2",
+            "url": "GPL-LICENSE.txt"
+        }
+    ],
+    "dependencies": {
+        "jquery": "1.5+"
+    },
+    "description": "keeps the state of form entries when you leave and come back later or refresh, etc.",
+    "keywords": [
+        "form state"
+    ],
+    "homepage": "https://github.com/sebringj/jquery.dumbformstate,
+    "maintainers": [
+        {
+            "name": "Jason Sebring",
+            "url": "https://github.com/sebringj"
+        }
+    ],
+    "files": [
+        "jquery.dumbformstate-1.0.1.js"
+    ]
+}
