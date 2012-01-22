@@ -76,7 +76,7 @@ $('form').dumbFormState('remove'); // removes all data associated with the forms
             db[key] = JSON.stringify(formData);
         }
         if (typeof(w.sessionStorage) === 'undefined' || typeof(w.localStorage) === 'undefined') {
-            return;
+            return $self;
         }
         if ($self.data('dumbFormState-defined')) {
             config = $self.data('dumbFormState-config');
