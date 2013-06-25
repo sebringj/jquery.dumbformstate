@@ -43,9 +43,19 @@ $('form').dumbFormState('remove'); // removes all data associated with the forms
         var $self = $(this), config, formKey,
         nonCheckableSelector = 'input[type="text"],input[type="password"],input[type="email"],input[type="hidden"],input[type="url"],input[type="tel"],input[type="search"],textarea,select',
         checkableSelector = 'input[type="checkbox"],input[type="radio"]',
-        allSelector = nonCheckableSelector + ',' + checkableSelector,
         passwordSelector = 'input[type="password"]',
         remove = false;
+
+        var input_types = ['color', 'date', 'datetime', 'datetime-local', 'email', 'month', 'number', 'range', 'search', 'tel', 'time', 'url', 'week'];
+        for (var i in input_types) {
+          var e = document.createElement('input');
+          e.type = input_types[i];
+          if (e.type == input_types[i]) {
+            nonCheckableSelector = nonCheckableSelector + ',input[type="' + e.type + '"]';
+          }
+        }
+        var allSelector = nonCheckableSelector + ',' + checkableSelector;
+
         function encode(str) {
             if(!str) { return ''; }
             return $('<div />').text(str).html().replace('"', '&quote;');
