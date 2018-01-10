@@ -15,10 +15,11 @@ json2.js : Douglas Crockford GitHUB -> https://github.com/douglascrockford/JSON-
 
 configurable options:
 $('form').dumbFormState({ 
-persistPasswords : false, // default is false, recommended to NOT do this
-persistLocal : false, // default is false, persists in sessionStorage or to localStorage
-skipSelector : null, // takes jQuery selector of items you DO NOT want to persist 
-autoPersist : true, // true by default, false will only persist on form submit
+	persistPasswords: false,	// default is false, recommended to NOT do this
+	persistLocal:     false,	// default is false, persists in sessionStorage or to localStorage
+	skipSelector:     null,		// takes jQuery selector of items you DO NOT want to persist 
+	autoPersist:      true,		// true by default, false will only persist on form submit
+	persistDomain:    false,	// false by default, false will only perist by URL path
 });
 
 instance methods:
@@ -105,7 +106,8 @@ $('form').dumbFormState('remove'); // removes all data associated with the forms
                 persistPasswords: false,
                 skipSelector: null,
                 persistLocal: false,
-                autoPersist: true
+                autoPersist: true,
+				persistDomain: false
             };
             if (arguments.length > 0 && $.isPlainObject(arguments[0])) {
                 config = $.extend(config, arguments[0]);
@@ -113,13 +115,14 @@ $('form').dumbFormState('remove'); // removes all data associated with the forms
             $self.data('dumbFormState-config', config);
         }
         db = config.persistLocal ? w.localStorage : w.sessionStorage;
+        dm = config.persistDomain ? document.domain : window.location.pathname;
         $('form').each(function () {
             var $this = $(this);
             $this.data('dumbFormState-index', $this.index());
         });
         $self.each(function () {
             var $this = $(this),
-            key = 'dumbFormState-' + window.location.pathname + '-' + $this.data('dumbFormState-index'),
+            key = 'dumbFormState-' + dm + '-' + $this.data('dumbFormState-index'),
             dbObj = db[key], persistTimeout = null;
             if ($this[0].nodeName !== 'FORM') {
                 throw 'dumbFormState - must be called on form elements only';
